@@ -9,7 +9,7 @@ I made this tool to scrape the New York Times' Technology page. Future design go
 ## Files
 
 ### Tool
-** web_scraper.py **
+**web_scraper.py**
 
 
 ### Test Files
