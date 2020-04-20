@@ -6,18 +6,19 @@ I made this tool to scrape the New York Times' Technology page. Future design go
    1. Beautiful Soup 4
    2. Requests
 
-## Web Scraper Tool - Files
-###### Main
-###### web_scraper.py
+## Files
+### Tool: web_scraper.py
 
-###### Test Files
-These files coincide with Corey Shaffer's Web Scraping Tutorial.
-They are test files for the Web Scraping Tool I built.
-###### test_scrape.html
-###### scrape_test.py
+
+### Test Files
+1. test_scrape.html
+2. scrape_test.py
+
+###### The files listed above coincide with Corey Shaffer's Web
+###### Scraping Tutorial. They are test files for the Web Scraping Tool I built.
 
 ## Output
 ###### CSV File containing the data scraped, specifically the article names, summary, authors and link.
 
 ## Acknowledgements
-###### [Corey Shaffer's Web Scraping Tutorial(https://www.youtube.com/watch?v=ng2o98k983k)]
+###### [Corey Shaffer's Web Scraping Tutorial](https://www.youtube.com/watch?v=ng2o98k983k)
