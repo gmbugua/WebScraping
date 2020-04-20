@@ -1,16 +1,22 @@
 from bs4 import BeautifulSoup
+import pandas as pd
 import requests
+import csv
 
 source = requests.get('https://coreyms.com').text
 soup = BeautifulSoup(source, 'lxml')
 
+csv_out = open('cms_scrape.csv', 'w')
+
+csv_writer = csv.writer(csv_out)
+
+csv_writer.writerow(['headline', 'summary', 'video_link'])
+
 for article in soup.find_all('article'):
 
     summary = article.find('div', class_='entry-content').p.text
-    print(summary)
 
     headline = article.h2.a.text
-    print(headline)
 
     try:
 
@@ -24,9 +30,15 @@ for article in soup.find_all('article'):
         yt_link = None
 
     yt_link = f'https://youtube.com/watch?v={vid_id}'
-    print(yt_link)
 
     print()
+
+    csv_writer.writerow([headline, summary, yt_link])
+
+csv_out.close()
+
+csv_in = pd.read_csv('cms_scrape.csv')
+print(csv_in.head(10))
 
 #--------- SCRAPING FROM A LOCAL FILE ---------#
 
