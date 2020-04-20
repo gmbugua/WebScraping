@@ -16,8 +16,7 @@ I made this tool to scrape the New York Times' Technology page. Future design go
     * test_scrape.html
     * scrape_test.py
 
-###### The files listed above coincide with Corey Shaffer's Web
-###### Scraping Tutorial. They are test files for the Web Scraping Tool I built.
+###### The test files listed above coincide with Corey Shaffer's Web Scraping Tutorial. They are test files for the Web Scraping Tool I built.
 
 ## Output
 ###### CSV File containing the data scraped, specifically the article names, summary, authors and link.
