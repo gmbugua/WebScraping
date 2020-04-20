@@ -12,12 +12,16 @@ for article in soup.find_all('article'):
     headline = article.h2.a.text
     print(headline)
 
-    vid_src = article.find('iframe', class_='youtube-player')
+    try:
 
-    if vid_src is not None:
+        vid_src = article.find('iframe', class_='youtube-player')
+
         vid_src = vid_src['src']
         vid_id = vid_src.split('/')[4]
         vid_id = vid_id.split('?')[0]
+
+    except Exception as e:
+        yt_link = None
 
     yt_link = f'https://youtube.com/watch?v={vid_id}'
     print(yt_link)
