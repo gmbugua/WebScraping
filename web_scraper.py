@@ -13,18 +13,25 @@ article_matches = soup.find_all('article')
 article_authors = soup.find_all('span', class_="css-9voj2j")
 
 latest_articles = soup.find('section', id="stream-panel")
+
+for i in range(len(article_authors)):
+    if type(article_authors[i]) != str:
+        article_authors[i] = article_authors[i].text
+
+for article, author_list in zip(article_matches, article_authors):
+    h = article.h2.text
+    s = article.p.text
+    l = f"https://www.nytimes.com{article.h2.a['href']}"
+    csv_writer.writerow([h, s, l])
+
 for article in latest_articles.div.ol.find_all('li', class_='css-ye6x8s'):
-    print(article.prettify())
+    h = article.a.h2.text
+    s = article.a.p
+    l = f"https://www.nytimes.com{article.a['href']}"
 
-# for i in range(len(article_authors)):
-#     if type(article_authors[i]) != str:
-#         article_authors[i] = article_authors[i].text
+    csv_writer.writerow([h, s, l])
 
-# for article, author_list in zip(article_matches, article_authors):
-#     h = article.h2.text
-#     s = article.p.text
-#     l = f"https://www.nytimes.com{article.h2.a['href']}"
-#     csv_writer.writerow([h, s, l])
 
-# csv_out.close()
-# csv_in = pd.read_csv('cms_scrape.csv')
+csv_out.close()
+csv_in = pd.read_csv('nytimes_scrape.csv')
+print(csv_in)
