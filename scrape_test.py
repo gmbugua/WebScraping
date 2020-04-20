@@ -3,13 +3,28 @@ import requests
 
 source = requests.get('https://coreyms.com').text
 soup = BeautifulSoup(source, 'lxml')
-article = soup.find('article')
 
-headline = article.h2.a.text
-print(headline)
+for article in soup.find_all('article'):
 
+    summary = article.find('div', class_='entry-content').p.text
+    print(summary)
 
-########### SCRAPING FROM A LOCAL FILE ############
+    headline = article.h2.a.text
+    print(headline)
+
+    vid_src = article.find('iframe', class_='youtube-player')
+
+    if vid_src is not None:
+        vid_src = vid_src['src']
+        vid_id = vid_src.split('/')[4]
+        vid_id = vid_id.split('?')[0]
+
+    yt_link = f'https://youtube.com/watch?v={vid_id}'
+    print(yt_link)
+
+    print()
+
+#--------- SCRAPING FROM A LOCAL FILE ---------#
 
 # Scraping Article Headlines from test_scrape.html
 # with open('test_scrape.html') as html_file:

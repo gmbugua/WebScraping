@@ -4,7 +4,6 @@ import requests
 source = requests.get('https://www.nytimes.com/section/technology').text
 soup = BeautifulSoup(source, 'lxml')
 
-article_match_test = soup.find('section', id="collection-technology")
 article_matches = soup.find_all('article')
 article_authors = soup.find_all('span', class_="css-9voj2j")
 
