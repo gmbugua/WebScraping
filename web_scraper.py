@@ -19,17 +19,16 @@ for i in range(len(article_authors)):
         article_authors[i] = article_authors[i].text
 
 for article, author_list in zip(article_matches, article_authors):
-    h = article.h2.text
-    s = article.p.text
-    l = f"https://www.nytimes.com{article.h2.a['href']}"
+    headline = article.h2.text
+    summary = article.p.text
+    link = f"https://www.nytimes.com{article.h2.a['href']}"
     csv_writer.writerow([h, s, l])
 
 for article in latest_articles.div.ol.find_all('li', class_='css-ye6x8s'):
-    h = article.a.h2.text
-    s = article.a.p
-    l = f"https://www.nytimes.com{article.a['href']}"
-
-    csv_writer.writerow([h, s, l])
+    headline = article.a.h2.text
+    summary = article.a.p
+    link = f"https://www.nytimes.com{article.a['href']}"
+    csv_writer.writerow([headline, summary, link])
 
 
 csv_out.close()
