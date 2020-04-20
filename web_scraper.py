@@ -13,9 +13,8 @@ for i in range(len(article_authors)):
     if type(article_authors[i]) != str:
         article_authors[i] = article_authors[i].text
 
-for article, author in zip(article_matches, article_authors):
-
+for article, author_list in zip(article_matches, article_authors):
     print("HEADLINE:\n {}".format(article.h2.text))
     print("SUMMARY:\n {}".format(article.p.text))
-    print("AUTHOR(S): ", end=" ")
+    print("AUTHOR(S):\n {}".format(author_list))
     print()
