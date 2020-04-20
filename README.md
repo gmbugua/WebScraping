@@ -7,7 +7,9 @@ I made this tool to scrape the New York Times' Technology page. Future design go
    2. Requests
 
 ## Files
-### Tool: web_scraper.py
+
+### Tool
+** web_scraper.py **
 
 
 ### Test Files
