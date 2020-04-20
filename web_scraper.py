@@ -22,7 +22,7 @@ for article, author_list in zip(article_matches, article_authors):
     headline = article.h2.text
     summary = article.p.text
     link = f"https://www.nytimes.com{article.h2.a['href']}"
-    csv_writer.writerow([h, s, l])
+    csv_writer.writerow([headline, summary, link])
 
 for article in latest_articles.div.ol.find_all('li', class_='css-ye6x8s'):
     headline = article.a.h2.text
@@ -32,5 +32,3 @@ for article in latest_articles.div.ol.find_all('li', class_='css-ye6x8s'):
 
 
 csv_out.close()
-csv_in = pd.read_csv('nytimes_scrape.csv')
-print(csv_in)
