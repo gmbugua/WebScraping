@@ -26,7 +26,7 @@ for article, author_list in zip(article_matches, article_authors):
 
 for article in latest_articles.div.ol.find_all('li', class_='css-ye6x8s'):
     headline = article.a.h2.text
-    summary = article.a.p
+    summary = article.a.p.text
     link = f"https://www.nytimes.com{article.a['href']}"
     csv_writer.writerow([headline, summary, link])
 
