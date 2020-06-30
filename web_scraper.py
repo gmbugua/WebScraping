@@ -11,7 +11,6 @@ csv_writer.writerow(['HEADLINE', 'SUMMARY', 'ARTICLE LINK'])
 
 article_matches = soup.find_all('article')
 article_authors = soup.find_all('span', class_="css-9voj2j")
-
 latest_articles = soup.find('section', id="stream-panel")
 
 for i in range(len(article_authors)):
@@ -28,7 +27,9 @@ for article in latest_articles.div.ol.find_all('li', class_='css-ye6x8s'):
     headline = article.a.h2.text
     summary = article.a.p.text
     link = f"https://www.nytimes.com{article.a['href']}"
+    source = requests.get(link).text
+    # print(source)
+    # break
     csv_writer.writerow([headline, summary, link])
-
 
 csv_out.close()
